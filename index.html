@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VEJFB76BKD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VEJFB76BKD');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kandado - Desarrollador Tecnológico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --bg-light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: url('https://z-cdn-media.chatglm.cn/files/200da82c-9090-49ee-affd-233b3039b1ba_fondo.jpg?auth_key=1788623635-3562e042716b41849c4d107e19b92a85-0-5f9ccc249ff3dab47413e308f73a1479') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-link {
+            color: var(--primary-color) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Services Cards */
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-window.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .message.bot {
+            justify-content: flex-start;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .message.user .message-content {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .chatbot-input {
+            padding: 1rem;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            border: 1px solid #e9ecef;
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            outline: none;
+        }
+
+        .chatbot-input button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-input button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .chatbot-window {
+                width: 90%;
+                right: 5%;
+            }
+        }
+
+        /* Loading Animation */
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://z-cdn-media.chatglm.cn/files/bd04320c-6869-4e2b-bc8b-1516224073b6_logo_portafolio.png?auth_key=1788623635-0feff2df14b24fc4b75cce65394f805d-0-2e7a613c908fb997ba1b3235c888215c" alt="Kandado Logo">
+                Kandado
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre-mi">Sobre Mí</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 data-aos="fade-up">Kandado</h1>
+                <p class="subtitle" data-aos="fade-up" data-aos-delay="200">Desarrollador Tecnológico & Diseñador Digital</p>
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <a href="#servicios" class="btn btn-light btn-lg me-3">Ver Servicios</a>
+                    <a href="#contacto" class="btn btn-outline-light btn-lg">Contactar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre-mi" class="bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title">Sobre Mí</h2>
+                    <p class="lead">Soy un desarrollador tecnológico apasionado por crear experiencias digitales excepcionales.</p>
+                    <p>Con experiencia en HTML, CSS, JavaScript y frameworks modernos, me especializo en construir interfaces de usuario atractivas y funcionales, integrando bots personalizados para mejorar la interacción.</p>
+                    <p class="mb-4">Mi objetivo profesional es combinar diseño y funcionalidad para desarrollar soluciones web minimalistas que no solo se vean bien, sino que también ofrezcan una experiencia de usuario fluida, intuitiva y eficiente.</p>
+                    <div class="d-flex gap-3">
+                        <div class="text-center">
+                            <i class="fas fa-code fa-2x text-primary"></i>
+                            <h5 class="mt-2">Desarrollo Web</h5>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-paint-brush fa-2x text-primary"></i>
+                            <h5 class="mt-2">Diseño Digital</h5>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-robot fa-2x text-primary"></i>
+                            <h5 class="mt-2">Bots Personalizados</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <img src="https://picsum.photos/seed/kandado/600/400" alt="Kandado" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Servicios</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Desarrollo Web</h4>
+                        <p>Creación de sitios web modernos y responsivos con las últimas tecnologías. Especializado en HTML, CSS, JavaScript y frameworks modernos.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <h4>Diseño Gráfico Digital</h4>
+                        <p>Diseño de flyers y carruseles para redes sociales, creando contenido visual atractivo y profesional para tu marca.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h4>Redacción de Contenidos</h4>
+                        <p>Creación de textos institucionales y visuales que comunican efectivamente tu mensaje y conectan con tu audiencia.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>Soporte Técnico</h4>
+                        <p>Soporte técnico personalizado bajo abonos mensuales, con atención directa y seguimiento continuo para clientes institucionales o individuales.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Mantenimiento de PCs</h4>
+                        <p>Mantenimiento preventivo y correctivo de computadoras, optimización de rendimiento y resolución de problemas técnicos.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>Bots Personalizados</h4>
+                        <p>Desarrollo e integración de bots entrenables para mejorar la interacción en tus plataformas digitales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title text-center" data-aos="fade-up">Contacto</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card shadow">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <i class="fas fa-phone fa-3x text-primary mb-3"></i>
+                                <h4>¿Listo para trabajar juntos?</h4>
+                                <p class="text-muted">Contáctame directamente para discutir tu proyecto</p>
+                            </div>
+                            <div class="text-center">
+                                <h5><i class="fas fa-phone-alt me-2"></i> 2615603930</h5>
+                                <p class="mt-3">Estoy disponible para consultas y colaboraciones. No dudes en llamarme para hablar sobre tus ideas.</p>
+                                <div class="social-links mt-4">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-3">Este portafolio fue desarrollado con el apoyo de herramientas de inteligencia artificial, combinando visión estratégica, diseño funcional y tecnología emergente.</p>
+            <p class="mb-0">&copy; 2024 Kandado. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h5 class="mb-0">Asistente Kandado</h5>
+                <button class="btn btn-sm btn-light" id="closeChatbot">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot">
+                    <div class="message-content">
+                        ¡Hola! Soy el asistente virtual de Kandado. ¿En qué puedo ayudarte hoy?
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Escribe tu mensaje...">
+                <button id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const closeChatbot = document.getElementById('closeChatbot');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+
+        // Knowledge base for the chatbot (trainable responses)
+        const knowledgeBase = {
+            "servicios": "Ofrezco desarrollo web, diseño gráfico digital, redacción de contenidos, soporte técnico, mantenimiento de PCs y desarrollo de bots personalizados. ¿Sobre qué servicio te gustaría saber más?",
+            "desarrollo web": "Creo sitios web modernos y responsivos usando HTML5, CSS3, JavaScript y frameworks modernos. Me especializo en interfaces atractivas y funcionales.",
+            "diseño": "Diseño flyers y carruseles para redes sociales, creando contenido visual atractivo y profesional para tu marca.",
+            "soporte": "Ofrezco soporte técnico personalizado con abonos mensuales, mantenimiento preventivo y correctivo de computadoras, y optimización de rendimiento.",
+            "contacto": "Puedes contactarme directamente al teléfono 2615603930. Estoy disponible para consultas y colaboraciones.",
+            "precio": "Los precios varían según el proyecto. Contáctame para recibir una cotización personalizada según tus necesidades.",
+            "experiencia": "Tengo experiencia en HTML, CSS, JavaScript y frameworks modernos. Me especializo en crear soluciones web minimalistas con excelente experiencia de usuario.",
+            "frameworks": "Utilizo frameworks como React, Vue.js y Angular para el frontend, y Node.js o Django para el backend en mis proyectos de desarrollo web.",
+            "redaccion": "Ofrezco redacción de contenidos optimizados para SEO, artículos de blog, descripciones de productos y copywriting para redes sociales.",
+            "mantenimiento": "El mantenimiento de PCs incluye limpieza de software, actualizaciones, eliminación de virus y optimización para un mejor rendimiento.",
+            "bots": "Desarrollo bots personalizados para Telegram o WhatsApp (este ultimo con costo adicional), automatizando tareas como respuestas automáticas o integraciones con APIs.",
+            "diseno grafico": "Mi diseño gráfico incluye creación de logos, banners, infografías y material publicitario digital con herramientas como Adobe Illustrator y Photoshop.",
+            "html5": "HTML5 es la base de mis sitios web, permitiendo estructuras semánticas y compatibilidad con multimedia para experiencias modernas.",
+            "css3": "Con CSS3 creo estilos responsivos, animaciones y transiciones que hacen que los sitios web sean visualmente atractivos en cualquier dispositivo.",
+            "javascript": "JavaScript es esencial para añadir interactividad, como formularios dinámicos, sliders y validaciones en tiempo real en mis proyectos.",
+            "react": "React es mi framework favorito para aplicaciones web de una sola página, enfocándome en componentes reutilizables y rendimiento óptimo.",
+            "seo": "Incluyo optimización SEO en mis sitios web, como meta tags, estructura de URLs amigables y velocidad de carga para mejorar el posicionamiento en buscadores.",
+            "ecommerce": "Desarrollo tiendas en línea con integración de pagos, carritos de compra y gestión de inventario.",
+            "apps moviles": "Aunque me enfoco en web, puedo colaborar en el desarrollo de apps móviles híbridas usando React Native para iOS y Android.",
+            "hosting": "Recomiendo y configuro hosting para tus sitios web, asegurando seguridad, respaldos automáticos y escalabilidad según el tráfico.",
+            "dominios": "Puedo ayudarte a registrar dominios y configurar DNS para que tu sitio web esté en línea rápidamente.",
+            "seguridad": "Implemento medidas de seguridad como HTTPS, firewalls y protección contra inyecciones SQL en todos mis desarrollos web.",
+            "accesibilidad": "Diseño sitios web accesibles siguiendo estándares WCAG, asegurando que sean usables por personas con discapacidades.",
+            "animaciones": "Creo animaciones sutiles con CSS o JavaScript para mejorar la experiencia de usuario sin sobrecargar el sitio.",
+            "integraciones": "Integro APIs de terceros como Google Maps, pagos con Mercado Pago o redes sociales para funcionalidades avanzadas.",
+            "testing": "Realizo pruebas exhaustivas, incluyendo unit testing y pruebas de usabilidad, para entregar productos libres de errores.",
+            "actualizaciones": "Ofrezco planes de actualizaciones regulares para mantener tu sitio web al día con las últimas tecnologías y seguridad.",
+            "colaboracion": "Estoy abierto a colaboraciones con otros freelancers o agencias para proyectos más grandes.",
+            "testimonios": "Mis clientes destacan mi puntualidad, creatividad y soporte post-entrega. Puedo compartir referencias si lo deseas.",
+            "disponibilidad": "Estoy disponible de lunes a viernes de 9 a 18 horas. Para urgencias, contáctame por teléfono.",
+            "pagos": "Acepto pagos vía transferencia bancaria o Mercado Pago. Ofrezco planes de pago en cuotas para proyectos grandes.",
+            "contratos": "Todos los proyectos incluyen un contrato claro con plazos, entregables y cláusulas de confidencialidad.",
+            "revisiones": "Incluyo rondas de revisiones ilimitadas durante el desarrollo para asegurar que el resultado final cumpla tus expectativas.",
+            "tiempos": "Los tiempos de entrega varían: un sitio web simple en 1-2 semanas, proyectos complejos en 4-6 semanas.",
+            "cursos": "Ofrezco cursos básicos para principiantes interesados en aprender.",
+            "consultoria": "Proporciono consultoría gratuita inicial para evaluar tus necesidades y sugerir la mejor solución.",
+            "branding": "Ayudo en el branding de tu marca, creando identidades visuales coherentes para logos hasta paletas de colores.",
+            "email marketing": "Creo plantillas de email marketing responsivas y atractivas para campañas efectivas.",
+            "ui ux": "Me enfoco en UI/UX design para asegurar interfaces intuitivas y experiencias de usuario fluidas.",
+            "optimizacion": "Optimizo sitios web para velocidad, reduciendo tiempos de carga con compresión de imágenes y minificación de código.",
+            "backup": "Configuro backups automáticos y recuperación de datos para proteger tu información.",
+            "analiticas": "Integro Google Analytics para rastrear el tráfico y comportamiento de usuarios en tu sitio.",
+            "multilingue": "Desarrollo sitios multilingües con soporte para idiomas como español, inglés.",
+            "ia bots": "Integro inteligencia artificial en bots para respuestas más inteligentes y personalizadas.",
+            "chatbots": "Creo chatbots para sitios web usando Dialogflow o similares para atención al cliente 24/7.",
+            "automatizacion": "Automatizo procesos con scripts en Python para tareas repetitivas en mantenimiento.",
+            "virus": "Elimino virus y malware de computadoras, restaurando el sistema a su estado óptimo.",
+            "hardware": "Ofrezco diagnóstico y reparación de hardware, como reemplazo de componentes en PCs.",
+            "software": "Instalo y configuro software personalizado según tus necesidades empresariales.",
+            "redes": "Configuro redes locales, WiFi segura y VPN para conexiones remotas.",
+            "camaras web": "Vendo, instalo y configuro cámaras de vigilancia.",
+            "default": "Gracias por tu mensaje. Para obtener más información sobre mis servicios, puedes contactarme directamente al 2615603930 o visitar las secciones de servicios en este portafolio."
+        };
+
+        // Chatbot toggle
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.add('active');
+            chatbotToggle.style.display = 'none';
+        });
+
+        closeChatbot.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+            chatbotToggle.style.display = 'block';
+        });
+
+        // Send message function
+        function sendBotMessage() {
+            const message = chatbotInput.value.trim();
+            if (message === '') return;
+
+            // Add user message
+            addMessage(message, 'user');
+            chatbotInput.value = '';
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            // Process and respond
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = getBotResponse(message.toLowerCase());
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Show typing indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            `;
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Remove typing indicator
+        function removeTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        // Get bot response based on knowledge base
+        function getBotResponse(message) {
+            for (const [key, value] of Object.entries(knowledgeBase)) {
+                if (message.includes(key)) {
+                    return value;
+                }
+            }
+            return knowledgeBase.default;
+        }
+
+        // Event listeners
+        sendMessage.addEventListener('click', sendBotMessage);
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendBotMessage();
+            }
+        });
+    </script>
+    <script>
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+</script>
+</body>
+</html>
